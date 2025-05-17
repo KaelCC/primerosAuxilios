@@ -1,88 +1,77 @@
 using UnityEngine;
 
-public class Standing_still : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    public float velocidad = 15f;
-    public Rigidbody2D rb;
-    public Animator animator;
-    public GameObject EXTINTORENMANOS;
+    public float speed = 10f;
+    private Rigidbody2D rb;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+    private Vector2 movement;
 
     private bool tieneExtintor = false;
-    private bool puedeRecoger = false;
-    private GameObject extintorSuelo;
-    private Vector2 movimiento;
-    private Vector3 escalaOriginal;
+    private GameObject extintorCercano;
 
     void Start()
     {
-        escalaOriginal = transform.localScale;
-
-        if (EXTINTORENMANOS != null)
-            EXTINTORENMANOS.SetActive(false);
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-        movimiento.x = Input.GetAxisRaw("Horizontal");
-        movimiento.y = 0; // evita que "vuele"
+        float moveX = Input.GetAxisRaw("Horizontal");
+        animator.SetBool("IsMoving", moveX != 0);
 
-        if (movimiento.x != 0)
+        if (moveX < 0)
+            spriteRenderer.flipX = true;
+        else if (moveX > 0)
+            spriteRenderer.flipX = false;
+
+        movement = new Vector2(moveX, 0);
+
+        // Presionar E para recoger extintor cercano
+        if (Input.GetKeyDown(KeyCode.R) && extintorCercano != null && !tieneExtintor)
         {
-            transform.localScale = new Vector3(Mathf.Sign(movimiento.x) * Mathf.Abs(escalaOriginal.x), escalaOriginal.y, escalaOriginal.z);
+            tieneExtintor = true;
+            animator.SetTrigger("Levantar");
+            animator.SetBool("TieneExtintor", true);
+            extintorCercano.SetActive(false);  // Oculta el extintor en el suelo
         }
 
-        // Animaciones dependiendo si tiene extintor
-        if (!tieneExtintor)
+        // Q para soltar extintor
+        if (Input.GetKeyDown(KeyCode.Q) && tieneExtintor)
         {
-            animator.SetBool("IsMoving", movimiento != Vector2.zero);
-        }
-        else
-        {
-            animator.SetBool("IsWalking", movimiento != Vector2.zero);
-        }
-
-        // Presionar R para recoger el extintor si est� cerca
-        if (puedeRecoger && !tieneExtintor && Input.GetKeyDown(KeyCode.R))
-        {
-            StartCoroutine(LevantarExtintor());
+            tieneExtintor = false;
+            animator.SetBool("TieneExtintor", false);
+            if (extintorCercano != null)
+            {
+                extintorCercano.SetActive(true);
+                extintorCercano.transform.position = transform.position + Vector3.right;  // Lo deja a un lado
+            }
         }
     }
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movimiento * velocidad * Time.fixedDeltaTime);
+        rb.linearVelocity = new Vector2(movement.x * speed, rb.linearVelocity.y);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Extintor") && !tieneExtintor)
-        {
-            puedeRecoger = true;
-            extintorSuelo = collision.gameObject;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D collision)
+    // Detecta entrada a la zona del extintor
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Extintor"))
         {
-            puedeRecoger = false;
+            extintorCercano = collision.gameObject;
         }
     }
 
-    private System.Collections.IEnumerator LevantarExtintor()
+    // Detecta salida de la zona del extintor
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        movimiento = Vector2.zero;
-        rb.linearVelocity = Vector2.zero;
-
-        animator.SetTrigger("Levantar");
-
-        yield return new WaitForSeconds(0.1f); // Tiempo para animaci�n de levantar
-
-        extintorSuelo.SetActive(false);
-        EXTINTORENMANOS.SetActive(true);
-
-        tieneExtintor = true;
-        animator.SetBool("TieneExtintor", true);
+        if (collision.CompareTag("Extintor"))
+        {
+            extintorCercano = null;
+        }
     }
 }
