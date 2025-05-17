@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pixil-layer-walking right left  (1)_0: -6974172310629448447
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
