@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4cbb94a8f2feeb14e9366727062c9c4a
+guid: 36ebe35d3b932dc4590921a2628b3f11
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -116,8 +116,8 @@ TextureImporter:
       name: pixil-frame-16_0
       rect:
         serializedVersion: 2
-        x: 245
-        y: 46
+        x: 242
+        y: 41
         width: 406
         height: 610
       alignment: 9
