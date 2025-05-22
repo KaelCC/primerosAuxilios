@@ -5659,7 +5659,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -243420707
+  m_SortingLayerID: 1902217535
   m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -3770763083538941003, guid: 4de466643d7954946a9a84cdcab451b4, type: 3}
@@ -10753,7 +10753,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -243420707
+  m_SortingLayerID: 1902217535
   m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -3770763083538941003, guid: 4de466643d7954946a9a84cdcab451b4, type: 3}
@@ -21359,7 +21359,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -243420707
+  m_SortingLayerID: 1902217535
   m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -3770763083538941003, guid: 4de466643d7954946a9a84cdcab451b4, type: 3}
@@ -21517,7 +21517,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -243420707
+  m_SortingLayerID: 1902217535
   m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -3770763083538941003, guid: 4de466643d7954946a9a84cdcab451b4, type: 3}
@@ -21560,10 +21560,10 @@ GameObject:
   - component: {fileID: 2003523008}
   - component: {fileID: 2003523007}
   - component: {fileID: 2003523006}
-  - component: {fileID: 2003523005}
   - component: {fileID: 2003523004}
   - component: {fileID: 2003523010}
   - component: {fileID: 2003523011}
+  - component: {fileID: 2003523012}
   m_Layer: 0
   m_Name: Standing_still
   m_TagString: Untagged
@@ -21617,20 +21617,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 24.02, y: 38.02}
   m_EdgeRadius: 0
---- !u!114 &2003523005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2003523003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e158822a69634554f96ed08f5c6e2551, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCarrying: 0
-  speed: 10
 --- !u!50 &2003523006
 Rigidbody2D:
   serializedVersion: 5
@@ -21784,7 +21770,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   animator: {fileID: 2003523007}
-  playerMovement: {fileID: 2003523005}
+  playerMovement: {fileID: 2003523012}
+--- !u!114 &2003523012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003523003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4048122c2d2f9749825bf4c968d80e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCarrying: 0
+  speed: 10
 --- !u!1 &2067122767
 GameObject:
   m_ObjectHideFlags: 0
@@ -26663,9 +26663,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2089498922}
   - component: {fileID: 2089498921}
-  - component: {fileID: 2089498920}
   - component: {fileID: 2089498924}
   - component: {fileID: 2089498923}
+  - component: {fileID: 2089498925}
   m_Layer: 9
   m_Name: extintor
   m_TagString: Extintor
@@ -26673,20 +26673,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2089498920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2089498919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa417e99927f8294798103851b9ac53a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  height: 0.2
 --- !u!212 &2089498921
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26822,6 +26808,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 23.42, y: 33.320004}
   m_Direction: 0
+--- !u!114 &2089498925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089498919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3738fd94bc9681b4584377d031e69aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  height: 0.2
 --- !u!1 &2100468985
 GameObject:
   m_ObjectHideFlags: 0
@@ -26897,7 +26897,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2136350571
+  m_SortingLayerID: -201853229
   m_SortingLayer: 8
   m_SortingOrder: 0
   m_RenderMode: 0
