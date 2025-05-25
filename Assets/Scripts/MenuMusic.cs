@@ -3,17 +3,27 @@ using UnityEngine;
 public class MenuMusic : MonoBehaviour
 {
     private static MenuMusic instance;
+    private AudioSource audioSource;
 
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // Evita que se destruya al cambiar de escena
+            DontDestroyOnLoad(gameObject);
+            audioSource = GetComponent<AudioSource>();
         }
         else
         {
-            Destroy(gameObject); // Evita duplicados
+            Destroy(gameObject);
+        }
+    }
+
+    public static void StopMenuMusic()
+    {
+        if (instance != null && instance.audioSource.isPlaying)
+        {
+            instance.audioSource.Stop();
         }
     }
 }

@@ -116,12 +116,12 @@ TextureImporter:
       name: pixil-frame-16_0
       rect:
         serializedVersion: 2
-        x: 143
-        y: 47
-        width: 386
+        x: 245
+        y: 46
+        width: 406
         height: 610
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.48981103, y: 0.48044035}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1febef6a786eb994baf295c1d17fd90d
     internalID: 0
     vertices: []
     indices: 

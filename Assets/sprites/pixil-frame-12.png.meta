@@ -122,12 +122,12 @@ TextureImporter:
       name: pixil-frame-12_0
       rect:
         serializedVersion: 2
-        x: 79
-        y: 47
+        x: 309
+        y: 49
         width: 402
         height: 562
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -144,12 +144,12 @@ TextureImporter:
       name: pixil-frame-12_1
       rect:
         serializedVersion: 2
-        x: 511
-        y: 511
+        x: 169
+        y: 513
         width: 114
         height: 82
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -166,12 +166,12 @@ TextureImporter:
       name: pixil-frame-12_2
       rect:
         serializedVersion: 2
-        x: 495
-        y: 383
+        x: 206
+        y: 390
         width: 82
         height: 82
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -188,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b5e7761f195b33d488f8c77f68d1fe0d
     internalID: 0
     vertices: []
     indices: 
