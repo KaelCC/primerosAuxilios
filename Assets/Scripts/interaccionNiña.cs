@@ -1,69 +1,109 @@
 using UnityEngine;
-using TMPro; // Importante para TextMeshPro
+using System.Collections;
+using System.Collections.Generic;
 
-public class InteraccionNina : MonoBehaviour
+public class InteraccionNinaConPanel : MonoBehaviour
 {
-    public TextMeshProUGUI textoMensaje; // Cambiado a TextMeshProUGUI
-    public float duracionMensaje = 3f;
+    [Header("Paneles de UI")]
+    public GameObject panelFaltanLlamas;       // Panel que dice "Faltan llamas por apagar"
+    public GameObject panelRescateExitoso;     // Panel que dice "Has rescatado a la niña"
+    public float duracionMensaje = 60f;
 
     private bool puedeInteractuar = false;
-    private bool yaSalvo = false;
+    private bool yaSalvada = false;
+    private List<FireSpread> fuegos = new List<FireSpread>();
+
+    void Start()
+    {
+        OcultarAmbosPaneles();
+        StartCoroutine(ActualizarFuegosPeriodicamente());
+        Debug.Log("🔄 Iniciado y paneles ocultos.");
+    }
 
     void Update()
     {
-        if (puedeInteractuar && !yaSalvo && Input.GetKeyDown(KeyCode.R))
+        if (puedeInteractuar && !yaSalvada && Input.GetKeyDown(KeyCode.R))
         {
-            if (!HayFuegosActivos())
+            Debug.Log("🟡 Presionaste R estando en el área de interacción.");
+            if (!HayFuegoActivo())
             {
-                yaSalvo = true;
-                MostrarMensaje("Has salvado correctamente a la niña");
-                // Aquí puedes añadir lógica extra al salvar a la niña (por ejemplo, avanzar nivel)
+                yaSalvada = true;
+                MostrarPanel(panelRescateExitoso);
+                Debug.Log("✅ Has rescatado correctamente a la niña.");
             }
             else
             {
-                MostrarMensaje("¡Apaga todo el fuego antes de salvar a la niña!");
+                MostrarPanel(panelFaltanLlamas);
+                Debug.Log("🚨 Aún hay fuego activo.");
             }
         }
     }
 
-    bool HayFuegosActivos()
+    bool HayFuegoActivo()
     {
-        FireSpread[] fuegos = Object.FindObjectsByType<FireSpread>(FindObjectsSortMode.None);
-        foreach (var fuego in fuegos)
+        foreach (FireSpread fuego in fuegos)
         {
-            if (fuego.enabled) return true;
+            if (fuego != null && fuego.estaEncendido)
+            {
+                Debug.Log("🔥 Fuego activo en: " + fuego.gameObject.name);
+                return true;
+            }
         }
+        Debug.Log("✅ No hay fuegos activos.");
         return false;
     }
 
-    void MostrarMensaje(string mensaje)
+    IEnumerator ActualizarFuegosPeriodicamente()
     {
-        textoMensaje.text = mensaje;
-        textoMensaje.gameObject.SetActive(true);
-        CancelInvoke(nameof(OcultarMensaje));
-        Invoke(nameof(OcultarMensaje), duracionMensaje);
+        while (true)
+        {
+            fuegos.Clear();
+            fuegos.AddRange(Object.FindObjectsByType<FireSpread>(FindObjectsSortMode.None));
+            yield return new WaitForSeconds(1f);
+        }
     }
 
-    void OcultarMensaje()
+    void MostrarPanel(GameObject panel)
     {
-        textoMensaje.gameObject.SetActive(false);
+        OcultarAmbosPaneles();
+        if (panel != null)
+        {
+            panel.SetActive(true);
+            Debug.Log("📋 Mostrando panel: " + panel.name);
+            StartCoroutine(OcultarPanelTrasTiempo(panel, duracionMensaje));
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    IEnumerator OcultarPanelTrasTiempo(GameObject panel, float segundos)
+    {
+        yield return new WaitForSeconds(segundos);
+        panel.SetActive(false);
+        Debug.Log("⏱️ Ocultado panel: " + panel.name);
+    }
+
+    void OcultarAmbosPaneles()
+    {
+        if (panelFaltanLlamas != null) panelFaltanLlamas.SetActive(false);
+        if (panelRescateExitoso != null) panelRescateExitoso.SetActive(false);
+        Debug.Log("🚫 Ambos paneles ocultos.");
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             puedeInteractuar = true;
-            MostrarMensaje("Presiona R para salvar a la niña");
+            Debug.Log("✅ Jugador entró en zona de interacción.");
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             puedeInteractuar = false;
-            OcultarMensaje();
+            OcultarAmbosPaneles();
+            Debug.Log("❌ Jugador salió de la zona de interacción.");
         }
     }
 }
