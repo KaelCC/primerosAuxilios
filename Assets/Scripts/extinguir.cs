@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FireInteraction : MonoBehaviour
 {
-    private GameObject fuegoCercano;
+    private FireSpread fuegoCercano;
 
     [Header("Sistema de partículas del chorro de agua")]
     public ParticleSystem aguaParticulas;
@@ -11,15 +11,15 @@ public class FireInteraction : MonoBehaviour
     {
         if (fuegoCercano != null && Input.GetKeyDown(KeyCode.E))
         {
-            // Apagar el fuego
-            fuegoCercano.SetActive(false);
+            // Apagar el fuego mediante FireSpread
+            fuegoCercano.Apagar();
             fuegoCercano = null;
 
             // Activar partículas de agua
             if (aguaParticulas != null)
             {
                 aguaParticulas.Play();
-                Invoke("DetenerParticulas", 0.5f); // Detiene después de 1.5 segundos
+                Invoke("DetenerParticulas", 0.5f);
             }
         }
     }
@@ -28,15 +28,23 @@ public class FireInteraction : MonoBehaviour
     {
         if (other.CompareTag("fuego"))
         {
-            fuegoCercano = other.gameObject;
+            FireSpread fs = other.GetComponentInParent<FireSpread>();
+            if (fs != null)
+            {
+                fuegoCercano = fs;
+            }
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("fuego") && fuegoCercano == other.gameObject)
+        if (other.CompareTag("fuego"))
         {
-            fuegoCercano = null;
+            FireSpread fs = other.GetComponentInParent<FireSpread>();
+            if (fs == fuegoCercano)
+            {
+                fuegoCercano = null;
+            }
         }
     }
 
