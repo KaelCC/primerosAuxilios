@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b63bab4d19f1004418347959430fad0f
+guid: b6fc2678875de2048998b80bc9a716aa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4591894534104458075
-    second: pixil-frame-2-removebg-preview_0
+      213: -2477133344682956881
+    second: mecanicoHerido_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pixil-frame-2-removebg-preview_0
+      name: mecanicoHerido_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 27
-        width: 61
-        height: 41
+        x: 309
+        y: 62
+        width: 405
+        height: 924
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5ac55a800405640c0800000000000000
-      internalID: -4591894534104458075
+      spriteID: fa7a5e0f8547f9dd0800000000000000
+      internalID: -2477133344682956881
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      pixil-frame-2-removebg-preview_0: -4591894534104458075
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
