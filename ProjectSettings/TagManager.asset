@@ -6,6 +6,8 @@ TagManager:
   tags:
   - fuego
   - Extintor
+  - inflamable
+  - interactuable
   layers:
   - Default
   - TransparentFX
@@ -16,8 +18,8 @@ TagManager:
   - sun
   - sky
   - background
-  - 
-  - 
+  - ExtintorLayer
+  - ground
   - 
   - 
   - 
@@ -57,6 +59,24 @@ TagManager:
     locked: 0
   - name: 5 light
     uniqueID: 1334189975
+    locked: 0
+  - name: agua
+    uniqueID: 4093114067
+    locked: 0
+  - name: tree
+    uniqueID: 143893317
+    locked: 0
+  - name: house
+    uniqueID: 2455414309
+    locked: 0
+  - name: kid
+    uniqueID: 3385423461
+    locked: 0
+  - name: fuego
+    uniqueID: 1902217535
+    locked: 0
+  - name: branches
+    uniqueID: 901446721
     locked: 0
   - name: player
     uniqueID: 451331909

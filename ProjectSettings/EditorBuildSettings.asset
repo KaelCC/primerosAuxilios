@@ -9,11 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: Assets/Scenes/CAMPOS.unity
     guid: 2593b463922177146a59f8f5e4f10179
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: c6021ddaed8dec54d890821a198585ea
+  - enabled: 1
+    path: Assets/Scenes/BENJUMEA.unity
+    guid: bf2f43da8931ed74faec18822b98786c
+  - enabled: 1
+    path: Assets/Scenes/RIOS.unity
+    guid: b2a6d7a7b370ba545a303339762308d8
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
