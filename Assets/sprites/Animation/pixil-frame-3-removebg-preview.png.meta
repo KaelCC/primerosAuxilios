@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pixil-frame-3-removebg-preview_0: -8416506805675541578
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
